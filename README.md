@@ -14,6 +14,15 @@ It bundles condensed knowledge from the official docs ([koreader.rocks/doc](http
 
 ## Install
 
+Runs straight from GitHub (no npm publish needed):
+
+```bash
+npx github:aknahin/koplugin-skill                      # Claude Code -> ~/.claude/skills
+npx github:aknahin/koplugin-skill install --all        # every supported agent
+```
+
+Once published to npm the short form `npx koplugin-skill` is equivalent. Options:
+
 ```bash
 # Claude Code (default, to ~/.claude/skills)
 npx koplugin-skill
