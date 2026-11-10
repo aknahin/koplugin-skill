@@ -39,7 +39,7 @@ def check_syntax(path: Path, rep: Report, rel: str):
     luajit = shutil.which("luajit")
     if not luajit:
         return False
-    r = subprocess.run([luajit, "-bl", str(path)], capture_output=True, text=True)
+    r = subprocess.run([luajit, "-bl", str(path)], stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True, errors="replace")
     if r.returncode != 0:
         rep.add("ERROR", rel, "syntax: " + (r.stderr.strip().splitlines() or ["luajit failed"])[0])
     return True
@@ -151,7 +151,7 @@ def validate(plugin: Path, rep: Report):
             cmd += ["--config", str(cfg)]
         else:
             cmd += ["--std", "luajit", "--no-self", "--globals", "G_reader_settings", "G_defaults", "--ignore", "631"]
-        r = subprocess.run(cmd + [str(plugin)], capture_output=True, text=True)
+        r = subprocess.run(cmd + [str(plugin)], capture_output=True, text=True, errors="replace")
         if r.returncode != 0:
             for line in r.stdout.splitlines():
                 if re.search(r":\d+:\d+:", line):
