@@ -1,0 +1,25 @@
+{
+  "skill_name": "koplugin-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Make me a KOReader plugin called 'Reading Goal' that lets me set a daily page goal in a spin dialog from the Tools menu, stores it, and shows a toast when I reach it. Reader only.",
+      "expected_output": "readinggoal.koplugin with _meta.lua + main.lua: is_doc_only=true, registerToMainMenu/addToMainMenu with sorting_hint, SpinWidget, LuaSettings with flush, onPageUpdate handler, Notification, gettext on all strings; validator run with 0 errors."
+    },
+    {
+      "id": 2,
+      "prompt": "my koplugin doesn't show up in Plugin management on my Kobo. folder is /mnt/onboard/.adds/koreader/plugins/mytool/ with main.lua and _meta.lua. what's wrong?",
+      "expected_output": "Identifies the directory must be named mytool.koplugin; mentions restart and crash.log."
+    },
+    {
+      "id": 3,
+      "prompt": "Review this plugin for problems: it calls UIManager:scheduleIn(60, function() self:poll() end) in init, uses io.popen('curl ...') for HTTP and print() for debugging, and has InfoMessage text = 'Done'.",
+      "expected_output": "Flags un-cancellable timer closure, blocking io.popen (use NetworkMgr:runWhenOnline/Trapper/socketutil), print vs logger, missing _() ; suggests fixes and validator/luacheck."
+    },
+    {
+      "id": 4,
+      "prompt": "Add a gesture-assignable action to my existing koplugin that toggles night mode warmth.",
+      "expected_output": "Uses Dispatcher:registerAction with event matching an on<Event> handler, guards Device:hasNaturalLight, returns true from handler."
+    }
+  ]
+}

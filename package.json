@@ -1,0 +1,12 @@
+{
+  "name": "koplugin-skill",
+  "version": "1.0.0",
+  "description": "Agent skill for developing, reviewing and verifying KOReader plugins (*.koplugin). Installs into Claude Code, Codex, Gemini CLI, OpenCode, Cursor and any SKILL.md-compatible agent.",
+  "bin": { "koplugin-skill": "bin/cli.js" },
+  "files": ["bin", "skills", "AGENTS.md", "README.md", "LICENSE"],
+  "scripts": { "test": "node test/cli.test.js" },
+  "keywords": ["koreader", "koplugin", "skill", "claude-code", "agent-skills", "codex", "lua", "ebook"],
+  "author": "aknahin",
+  "license": "MIT",
+  "engines": { "node": ">=16" }
+}
