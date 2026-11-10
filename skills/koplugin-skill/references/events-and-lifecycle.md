@@ -26,12 +26,12 @@ Names below are used by core plugins; confirm in source (`grep -rn "onEventName"
 | `onSuspend()` / `onResume()` | Device sleep/wake — stop/restart timers, networking |
 | `onNetworkConnected()` / `onNetworkDisconnected()` | WiFi state |
 | `onCloseWidget()` | The plugin container is torn down — unschedule |
-| `onExit()` / `onQuit()` | App shutting down |
+| `onExit()` | App shutting down |
 
 ## Scheduling
 
 ```lua
-UIManager:scheduleIn(30, self.tick)        -- run self.tick(…) in 30 s (same function ref needed to cancel)
+UIManager:scheduleIn(30, self.tick, self)   -- run self.tick(self) in 30 s; extra args are passed through
 UIManager:unschedule(self.tick)
 UIManager:nextTick(function() … end)       -- after current event loop turn
 UIManager:setDirty(widget, "ui")           -- request repaint; modes: "ui", "partial", "flashui", "full"

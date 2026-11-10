@@ -79,4 +79,4 @@ Dynamic text uses `text_func = function() return T(_("Timeout: %1 s"), self.time
 ## Reader-only vs file-manager
 
 - Reader menu hooks are the same API in both; FileManager menu uses `self.ui.menu:registerToMainMenu` too. Check `self.ui.document` before touching book data.
-- File manager context adds `self.ui.file_chooser` and, for per-file actions, `FileManager:addFileDialogButtons(...)` (see `plugins/` for current usage).
+- File manager context adds `self.ui.file_chooser` and, for per-file actions, `self.ui:addFileDialogButtons(id, function(file, is_file, book_props) return {{ text = ..., callback = ... }} end)`.
